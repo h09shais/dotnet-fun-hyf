@@ -95,3 +95,26 @@ componentDidMount() {
   ))}
 </ul>
 ```
+
+## Part 04: Bonus
+
+### Add CORS support (If required)
+
+```cs
+// simple-webapi/Startup.cs
+public void ConfigureServices(IServiceCollection services)
+{
+    services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
+    //Add CORS support
+    services.AddCors(o => o.AddPolicy("AllowAll",
+        builder =>
+        {
+            builder
+                .AllowAnyOrigin()
+                .AllowAnyMethod()
+                .AllowAnyHeader()
+                .AllowCredentials();
+        }));
+}
+```
