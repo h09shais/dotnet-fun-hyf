@@ -96,6 +96,16 @@ componentDidMount() {
 </ul>
 ```
 
+### Run both of our React App and .Net Web API
+
+```sh
+> yarn start
+```
+
+```sh
+> dotnet run
+```
+
 ## Part 04: Bonus
 
 ### Add CORS support (If required)
