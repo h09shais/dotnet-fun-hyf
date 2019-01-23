@@ -7,20 +7,27 @@ class App extends Component {
     super(props);
 
     this.state = {
-      items: [1, 2, 3]
+      items: []
     };
+  }
+
+  componentDidMount() {
+    fetch("/api/values")
+      .then(response => response.json())
+      .then(data => this.setState({ items: data }));
   }
 
   render() {
     const { items } = this.state;
+
     return (
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <ul>
-            {items.map(item => {
-              return <li>{item}</li>;
-            })}
+            {items.map((item, i) => (
+              <li key={i}>{item}</li>
+            ))}
           </ul>
         </header>
       </div>

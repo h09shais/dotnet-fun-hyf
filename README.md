@@ -28,7 +28,7 @@
 ### Render items
 
 ```javascript
-// App.js
+// simple-portal/src/App.js
 import React, { Component } from "react";
 import logo from "./logo.svg";
 import "./App.css";
@@ -60,4 +60,38 @@ class App extends Component {
 }
 
 export default App;
+```
+
+### Proxy setup
+
+```json
+// simple-portal/package.json
+"proxy": "https://localhost:5001"
+```
+
+### Adjust App component
+
+```javascript
+// simple-portal/src/App.js
+this.state = {
+  items: []
+};
+
+componentDidMount() {
+    fetch("/api/values")
+      .then(response => response.json())
+      .then(data => this.setState({ items: data }));
+}
+```
+
+### Render unique items
+
+```javascript
+// simple-portal/src/App.js
+
+<ul>
+  {items.map((item, i) => (
+    <li key={i}>{item}</li>
+  ))}
+</ul>
 ```
