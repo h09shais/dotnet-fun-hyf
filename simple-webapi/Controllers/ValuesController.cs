@@ -25,12 +25,14 @@ namespace simple_webapi.Controllers
         }
 
         // POST api/values
+        // Used to create a resource.
         [HttpPost]
         public void Post([FromBody] string value)
         {
         }
 
         // PUT api/values/5
+        // Used to create a resource, or overwrite!
         [HttpPut("{id}")]
         public void Put(int id, [FromBody] string value)
         {

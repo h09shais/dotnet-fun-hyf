@@ -106,7 +106,40 @@ componentDidMount() {
 > dotnet run
 ```
 
-## Part 04: Bonus
+## Part 04: Add and configure Swagger
+
+### Package installation
+
+```sh
+> dotnet add simple-webapi.csproj package Swashbuckle.AspNetCore
+```
+
+### Add and configure Swagger middleware
+
+```cs
+// public void ConfigureServices(IServiceCollection services)
+services.AddSwaggerGen(c =>
+{
+  c.SwaggerDoc("v1", new Swashbuckle.AspNetCore.Swagger.Info { Title = "My API", Version = "v1" });
+});
+
+// public void Configure(IApplicationBuilder app)
+app.UseSwagger();
+app.UseSwaggerUI(c =>
+{
+  c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+});
+```
+
+### Get your swagger documentation
+
+```sh
+> dotnet run
+```
+
+Browse https://localhost:5001/swagger
+
+## Part 05: Bonus
 
 ### Add CORS support (If required)
 
